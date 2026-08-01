@@ -1670,14 +1670,14 @@
           <button id="analyzeBtn" class="primary" type="button">Analizar</button>
           <button id="randomBtn" class="secondary" type="button">Aleatoria</button>
           <button id="clearBtn" class="secondary" type="button">Limpiar</button>
-          <button id="scrutinizeTrendBtn" class="scrutiny-action" type="button" disabled title="Primero analiza un histórico">Escrutar con histórico</button>
+          <button id="scrutinizeTrendBtn" class="scrutiny-action" type="button" disabled title="Compara esta combinación con las tres sugerencias construidas a partir del histórico">Escrutar con histórico</button>
         </div>
       </div>
 
       <div id="inputHelp" class="helper-row">
         <span>Acepta espacios, comas, puntos, guiones o saltos de línea.</span>
         <span>Las posiciones P1–P6 se calculan en orden ascendente.</span>
-        <span>El escrutinio se activa después de analizar un histórico.</span>
+        <span>El escrutinio compara esta combinación con tres sugerencias globales del histórico.</span>
       </div>
       <div id="errorBox" class="error" role="alert"></div>
     </section>
@@ -1792,7 +1792,7 @@
         <div class="scrutiny-header">
           <div>
             <h2>Escrutinio de la combinación con las tendencias del histórico</h2>
-            <p>La combinación introducida arriba se toma como ganadora y se compara simultáneamente con los criterios Equilibrado corregido, Impulso reciente corregido y Estabilidad corregida.</p>
+            <p>La combinación introducida se toma como ganadora o referencia y se compara con tres combinaciones construidas mediante Criterio equilibrado, Impulso reciente y Estabilidad entre subtramos. Cada sugerencia sintetiza números naturales, DR9, terminaciones, distancias, suma, amplitud, paridad, bajos/altos, firmas y patrones del histórico.</p>
           </div>
           <button id="closeScrutinyBtn" class="secondary" type="button">Cerrar escrutinio</button>
         </div>
@@ -3574,7 +3574,7 @@
         <div class="history-kpi"><span>Paridad líder</span><strong>${escapeHtml(parityLeader[0])} · ${formatNumber(parityLeader[1])}</strong></div>
         <div class="history-kpi"><span>Amplitud líder</span><strong>${amplitudeLeader[0]} · ${formatNumber(amplitudeLeader[1])}</strong></div>
       </div>${trendMethodPanel(n)}
-      <div class="scrutiny-history-hint">Para comprobar las tendencias con una combinación ganadora, introdúcela en el <a href="#comboInput">analizador individual</a> y pulsa <strong>“Escrutar con histórico”</strong>. El escrutinio compara simultáneamente los tres criterios.</div>`;
+      <div class="scrutiny-history-hint">Para comprobar el análisis con una combinación ganadora, introdúcela en el <a href="#comboInput">analizador individual</a> y pulsa <strong>“Escrutar con histórico”</strong>. Se comparará con tres combinaciones sugeridas, cada una construida mediante una síntesis global de números, DR9, terminaciones, distancias, suma, amplitud y patrones según su propio criterio.</div>`;
 
       const dr9PositionHtml = `${trendGrid(Array.from({ length: 6 }, (_, index) => categoricalTrendCard(`P${index + 1} · DR9`, trendMetrics.map((m) => m.dr9[index]), { minOccurrences: 2 })))}<div class="rank-grid">${positionDr9.map((map, index) => rankTable(`P${index + 1} · valores DR9`, map, n, { numeric: true })).join("")}</div>`;
       const globalActorsHtml = `${trendGrid([
